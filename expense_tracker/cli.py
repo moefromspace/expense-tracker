@@ -8,11 +8,6 @@ Be creative! do whatever you want!
 - Import things from your .base module
 """
 import argparse
-import uuid
-from datetime import datetime
-import json
-import os
-
 from .base import ExpenseTracker    
 
 def main():

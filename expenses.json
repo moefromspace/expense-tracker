@@ -22,5 +22,11 @@
         "date": "2024-10-18",
         "description": "Rent",
         "amount": 100.0
+    },
+    {
+        "id": "115789b2-0b49-4427-9e2b-e0e922dab6ad",
+        "date": "2024-11-21",
+        "description": "Lunch",
+        "amount": 120.0
     }
 ]

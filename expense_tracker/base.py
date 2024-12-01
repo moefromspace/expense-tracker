@@ -113,7 +113,7 @@ class ExpenseTracker:
             for expense in self.expenses:
                 print(f"{expense['id']:<36} | {expense['date']:<12} | {expense['description']:<20} | {expense['amount']:>10}")
 
-    def expenses_summary(self) -> int :
+    def expenses_summary(self):
         total_expenses = 0
         if self.expenses:
            # Go through the expenses list and add to total
@@ -121,7 +121,7 @@ class ExpenseTracker:
                total_expenses += expense['amount']
         print(f"Total Expenses: {total_expenses}")
                 
-    def delete_expense(self, expense_id:uuid) :
+    def delete_expense(self, expense_id) :
         # Go through the expenses list and print each one
         for expense in self.expenses:
             if expense['id'] == expense_id:
