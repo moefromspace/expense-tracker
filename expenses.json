@@ -1,0 +1,26 @@
+[
+    {
+        "id": "466ab4f9-209c-4164-96a5-07076f30d73f",
+        "date": "2024-11-01",
+        "description": "Shoes",
+        "amount": 100.0
+    },
+    {
+        "id": "5829cc72-247c-45d0-bebc-a41b231b122e",
+        "date": "2024-10-01",
+        "description": "Hooker",
+        "amount": 100.0
+    },
+    {
+        "id": "655a35dd-1d9c-4fce-be94-bac6c5c4966a",
+        "date": "2024-10-21",
+        "description": "Clothes",
+        "amount": 100.0
+    },
+    {
+        "id": "f42e2a96-8d95-4496-b8c6-9820ad2fbea4",
+        "date": "2024-10-18",
+        "description": "Rent",
+        "amount": 100.0
+    }
+]

@@ -7,22 +7,55 @@ Be creative! do whatever you want!
 - Start a web application
 - Import things from your .base module
 """
+import argparse
+import uuid
+from datetime import datetime
+import json
+import os
 
+from .base import ExpenseTracker    
 
-def main():  # pragma: no cover
-    """
-    The main function executes on commands:
-    `python -m expense_tracker` and `$ expense_tracker `.
+def main():
+    # Create the main parser
+    parser = argparse.ArgumentParser(description="Expense Tracker CLI")
+    subparsers = parser.add_subparsers(dest="command", help="Commands")
 
-    This is your program's entry point.
+    # Add Expense Command
+    add_parser = subparsers.add_parser("add", help="Add a new expense")
+    add_parser.add_argument("-d", "--date", required=True, help="Date of the expense (YYYY-MM-DD)")
+    add_parser.add_argument("-desc", "--description", required=True, help="Description of the expense")
+    add_parser.add_argument("-a", "--amount", type=float, required=True, help="Amount of the expense")
 
-    You can change this function to do whatever you want.
-    Examples:
-        * Run a test suite
-        * Run a server
-        * Do some other stuff
-        * Run a command line application (Click, Typer, ArgParse)
-        * List all available tasks
-        * Run an application (Flask, FastAPI, Django, etc.)
-    """
-    print("This will do something")
+    # List Expenses Command
+    list_parser = subparsers.add_parser("list", help="List all expenses")
+
+    # Delete Expense Command
+    delete_parser = subparsers.add_parser("delete", help="Delete an expense by ID")
+    delete_parser.add_argument("-id", "--id", required=True, help="ID of the expense to delete")
+
+    # Delete Expense Command
+    summary_parser = subparsers.add_parser("summary", help="Sum of all expenses recorded")
+
+    # Parse the arguments
+    args = parser.parse_args()
+
+    # Initialize the ExpenseTracker
+    tracker = ExpenseTracker(filepath="expenses.json")
+
+    # Handle commands
+    if args.command == "add":
+        try:
+            tracker.add_expense(args.date, args.description, args.amount)
+        except (ValueError, TypeError) as e:
+            print(f"Error: {e}")
+    elif args.command == "list":
+        tracker.list_expenses()
+    elif args.command == "delete":
+        tracker.delete_expense(args.id)
+    elif args.command == "summary":
+        tracker.expenses_summary()
+    else:
+        parser.print_help()
+
+if __name__ == "__main__":
+    main()
